@@ -1,0 +1,20 @@
+[package]
+name = "datafusion-test"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+datafusion = { version = "41.0.0", default-features = false, features = [
+    "array_expressions",
+    "compression",
+    "crypto_expressions",
+    "datetime_expressions",
+    "encoding_expressions",
+    "math_expressions",
+    "nested_expressions",
+    "regex_expressions",
+    "string_expressions",
+    "unicode_expressions"
+] }
+half = { version = "2.4.1", default-features = false, features = ["std"] }
+tokio = { version = "1.39.2", default-features = false, features = ["macros", "rt-multi-thread"] }
