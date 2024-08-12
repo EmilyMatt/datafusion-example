@@ -1,0 +1,22 @@
+[advisories]
+
+# The various windows crates should be safe
+[bans]
+multiple-versions = "allow"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+
+[licenses]
+exceptions = [
+    { name = "unicode-ident", allow = ["Unicode-DFS-2016"] }, # unique license
+]
+allow = [
+    "Apache-2.0 WITH LLVM-exception",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CC0-1.0",
+    "MIT",
+]
