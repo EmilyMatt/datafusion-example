@@ -1,8 +1,7 @@
-use datafusion::logical_expr::Volatility;
 use datafusion::{
     arrow::{array::Array, datatypes::DataType},
     common::{Result as DataFusionResult, ScalarValue},
-    logical_expr::{ColumnarValue, ScalarUDFImpl, Signature},
+    logical_expr::{ColumnarValue, ScalarUDFImpl, Signature, Volatility},
 };
 use std::{any::Any, cmp::Ordering};
 
@@ -52,6 +51,7 @@ fn cast_and_compare<'a>(
     // Always cast both, lots of edge cases(dec256 and dec256 with different params etc.), just...always do, learned the hard way
     let lhs_cast = lhs.cast_to(target_dt).ok()?;
     let rhs_cast = rhs.cast_to(target_dt).ok()?;
+
     let ord = rhs_cast.partial_cmp(&lhs_cast)?;
     if ord == Ordering::Greater {
         return Some(rhs_cast);
